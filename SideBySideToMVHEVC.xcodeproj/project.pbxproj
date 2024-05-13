@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		59CEDD7C2AABEAB100EEF615 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEDD7B2AABEAB100EEF615 /* main.swift */; };
 		59E917192AB3B54D00B5FE38 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E917182AB3B54D00B5FE38 /* Converter.swift */; };
+		9A0C2C1C2BF0E04000706EB6 /* convertAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C2C1B2BF0E04000706EB6 /* convertAppApp.swift */; };
+		9A0C2C1E2BF0E04000706EB6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C2C1D2BF0E04000706EB6 /* ContentView.swift */; };
+		9A0C2C202BF0E04200706EB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A0C2C1F2BF0E04200706EB6 /* Assets.xcassets */; };
+		9A0C2C232BF0E04200706EB6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A0C2C222BF0E04200706EB6 /* Preview Assets.xcassets */; };
+		9A0C2C272BF0E05000706EB6 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E917182AB3B54D00B5FE38 /* Converter.swift */; };
+		9A0C2C292BF0E23D00706EB6 /* sample.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9A0C2C282BF0E23D00706EB6 /* sample.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,13 +33,26 @@
 		59CEDD782AABEAB100EEF615 /* SideBySideToMVHEVC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SideBySideToMVHEVC; sourceTree = BUILT_PRODUCTS_DIR; };
 		59CEDD7B2AABEAB100EEF615 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		59E917182AB3B54D00B5FE38 /* Converter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
-		8221DF5C3E0258814961E82D /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.txt; sourceTree = "<group>"; };
-		881D995EA3AACBEAFAD69DAD /* SampleCode.xcconfig */ = {isa = PBXFileReference; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
+		8221DF5C3E0258814961E82D /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		881D995EA3AACBEAFAD69DAD /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
+		9A0C2C192BF0E04000706EB6 /* convertApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = convertApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0C2C1B2BF0E04000706EB6 /* convertAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = convertAppApp.swift; sourceTree = "<group>"; };
+		9A0C2C1D2BF0E04000706EB6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9A0C2C1F2BF0E04200706EB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A0C2C222BF0E04200706EB6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9A0C2C282BF0E23D00706EB6 /* sample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.mp4; sourceTree = "<group>"; };
 		EA846D03CFB05E920F8D069E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		59CEDD752AABEAB100EEF615 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A0C2C162BF0E04000706EB6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -57,6 +76,7 @@
 			children = (
 				EA846D03CFB05E920F8D069E /* README.md */,
 				59CEDD7A2AABEAB100EEF615 /* SideBySideToMVHEVC */,
+				9A0C2C1A2BF0E04000706EB6 /* convertApp */,
 				59CEDD792AABEAB100EEF615 /* Products */,
 				94FDE64DE0094179CC8ABB69 /* Configuration */,
 				16805CB4851AB2B5026A1D4B /* LICENSE */,
@@ -67,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				59CEDD782AABEAB100EEF615 /* SideBySideToMVHEVC */,
+				9A0C2C192BF0E04000706EB6 /* convertApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,6 +107,26 @@
 				881D995EA3AACBEAFAD69DAD /* SampleCode.xcconfig */,
 			);
 			name = Configuration;
+			sourceTree = "<group>";
+		};
+		9A0C2C1A2BF0E04000706EB6 /* convertApp */ = {
+			isa = PBXGroup;
+			children = (
+				9A0C2C282BF0E23D00706EB6 /* sample.mp4 */,
+				9A0C2C1B2BF0E04000706EB6 /* convertAppApp.swift */,
+				9A0C2C1D2BF0E04000706EB6 /* ContentView.swift */,
+				9A0C2C1F2BF0E04200706EB6 /* Assets.xcassets */,
+				9A0C2C212BF0E04200706EB6 /* Preview Content */,
+			);
+			path = convertApp;
+			sourceTree = "<group>";
+		};
+		9A0C2C212BF0E04200706EB6 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9A0C2C222BF0E04200706EB6 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,6 +149,25 @@
 			productReference = 59CEDD782AABEAB100EEF615 /* SideBySideToMVHEVC */;
 			productType = "com.apple.product-type.tool";
 		};
+		9A0C2C182BF0E04000706EB6 /* convertApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A0C2C262BF0E04200706EB6 /* Build configuration list for PBXNativeTarget "convertApp" */;
+			buildPhases = (
+				9A0C2C152BF0E04000706EB6 /* Sources */,
+				9A0C2C162BF0E04000706EB6 /* Frameworks */,
+				9A0C2C172BF0E04000706EB6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = convertApp;
+			packageProductDependencies = (
+			);
+			productName = convertApp;
+			productReference = 9A0C2C192BF0E04000706EB6 /* convertApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -115,12 +175,16 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				DefaultBuildSystemTypeForWorkspace = Latest;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1510;
 				ORGANIZATIONNAME = Apple;
 				TargetAttributes = {
 					59CEDD772AABEAB100EEF615 = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					9A0C2C182BF0E04000706EB6 = {
+						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
@@ -133,14 +197,30 @@
 				Base,
 			);
 			mainGroup = 59CEDD6F2AABEAB100EEF615;
+			packageReferences = (
+			);
 			productRefGroup = 59CEDD792AABEAB100EEF615 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				59CEDD772AABEAB100EEF615 /* SideBySideToMVHEVC */,
+				9A0C2C182BF0E04000706EB6 /* convertApp */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A0C2C172BF0E04000706EB6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A0C2C232BF0E04200706EB6 /* Preview Assets.xcassets in Resources */,
+				9A0C2C292BF0E23D00706EB6 /* sample.mp4 in Resources */,
+				9A0C2C202BF0E04200706EB6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		59CEDD742AABEAB100EEF615 /* Sources */ = {
@@ -149,6 +229,16 @@
 			files = (
 				59E917192AB3B54D00B5FE38 /* Converter.swift in Sources */,
 				59CEDD7C2AABEAB100EEF615 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A0C2C152BF0E04000706EB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A0C2C1E2BF0E04000706EB6 /* ContentView.swift in Sources */,
+				9A0C2C272BF0E05000706EB6 /* Converter.swift in Sources */,
+				9A0C2C1C2BF0E04000706EB6 /* convertAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +401,75 @@
 			};
 			name = Release;
 		};
+		9A0C2C242BF0E04200706EB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"convertApp/Preview Content\"";
+				DEVELOPMENT_TEAM = T2DT6C6U3X;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.0x67.convertApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9A0C2C252BF0E04200706EB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"convertApp/Preview Content\"";
+				DEVELOPMENT_TEAM = T2DT6C6U3X;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.0x67.convertApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -328,6 +487,15 @@
 			buildConfigurations = (
 				59CEDD802AABEAB100EEF615 /* Debug */,
 				59CEDD812AABEAB100EEF615 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A0C2C262BF0E04200706EB6 /* Build configuration list for PBXNativeTarget "convertApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A0C2C242BF0E04200706EB6 /* Debug */,
+				9A0C2C252BF0E04200706EB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

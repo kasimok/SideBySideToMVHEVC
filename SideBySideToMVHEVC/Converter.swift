@@ -118,11 +118,19 @@ final class SideBySideConverter: Sendable {
                     // Handling all available frames within the closure improves performance.
 					while frameInput.isReadyForMoreMediaData && bufferInputAdapter.assetWriterInput.isReadyForMoreMediaData {
                         if let sampleBuffer = self.sideBySideTrack.copyNextSampleBuffer() {
+                            
                             guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
                                 fatalError("Failed to load source samples as an image buffer")
                             }
+                            // throttle the rate at which frames are processed and appended to the output. Without this delay, the code might be trying to append frames faster than they can be processed, leading to the fatalError("Failed to append tagged buffers to multiview output").
+                            Thread.sleep(forTimeInterval: 0.02)
                             let taggedBuffers = self.convertFrame(fromSideBySide: imageBuffer, with: pixelBufferPool, in: session)
                             let newPTS = sampleBuffer.outputPresentationTimeStamp
+                            
+                            while !bufferInputAdapter.assetWriterInput.isReadyForMoreMediaData {
+                                // waiting
+                            }
+                            debugPrint(newPTS)
                             if !bufferInputAdapter.appendTaggedBuffers(taggedBuffers, withPresentationTime: newPTS) {
                                 fatalError("Failed to append tagged buffers to multiview output")
                             }
@@ -190,4 +198,35 @@ final class SideBySideConverter: Sendable {
 		
 		return taggedBuffers
 	}
+}
+
+
+private func checkAssetWriterStatus(assetWriter: AVAssetWriter) {
+    if assetWriter.status == .failed, let error = assetWriter.error {
+        let nsError = error as NSError
+        print("Asset writer failed with error: \(nsError), \(nsError.userInfo)")
+    } else if assetWriter.status == .cancelled {
+        print("Asset writer was cancelled")
+    } else if assetWriter.status == .completed {
+        print("Asset writer completed successfully")
+    }
+}
+
+func copyCMSampleBuffer(_ sampleBuffer: CMSampleBuffer) -> CMSampleBuffer? {
+    var blockBuffer: CMBlockBuffer?
+    var timingInfo = CMSampleTimingInfo()
+    var formatDescription: CMFormatDescription?
+    var sampleSizeArray: [Int] = Array(repeating: 0, count: CMSampleBufferGetNumSamples(sampleBuffer))
+    
+    guard CMSampleBufferGetSampleTimingInfoArray(sampleBuffer, entryCount: sampleSizeArray.count, arrayToFill: &timingInfo, entriesNeededOut: nil) == noErr else { return nil }
+    formatDescription = CMSampleBufferGetFormatDescription(sampleBuffer)
+    
+    var copiedBuffer: CMSampleBuffer?
+    let status = CMSampleBufferCreate(allocator: kCFAllocatorDefault, dataBuffer: blockBuffer, dataReady: true, makeDataReadyCallback: nil, refcon: nil, formatDescription: formatDescription, sampleCount: CMSampleBufferGetNumSamples(sampleBuffer), sampleTimingEntryCount: 1, sampleTimingArray: &timingInfo, sampleSizeEntryCount: sampleSizeArray.count, sampleSizeArray: &sampleSizeArray, sampleBufferOut: &copiedBuffer)
+    
+    if status != noErr {
+        return nil
+    }
+    
+    return copiedBuffer
 }
