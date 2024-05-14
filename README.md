@@ -1,3 +1,10 @@
+This is a bug report project to reproduce `AVLocalizedErrorWithUnderlyingOSStatus: Returning error (AVFoundationErrorDomain / -11819) status (-16155)` when trying to port the below example code to iOS.
+
+To reproduce, you can run the `convertApp` target, and tap `Convert` button, after several printed PTS, the app will crash at `fatalError("Failed to append tagged buffers to multiview output")` 
+
+
+
+
 # Converting side-by-side 3D video to multiview HEVC
 
 Create video content for visionOS by converting an existing 3D HEVC file to a multiview HEVC format.
