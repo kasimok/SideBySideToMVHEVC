@@ -1,5 +1,7 @@
 Port Apple's Coverting 3D video sample code to iOS.
 
+WARNIG: Don't press the Convert button again is there is an ongoing task!
+
 # Converting side-by-side 3D video to multiview HEVC
 
 Create video content for visionOS by converting an existing 3D HEVC file to a multiview HEVC format.
