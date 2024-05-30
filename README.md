@@ -1,9 +1,4 @@
-This is a bug report project to reproduce `AVLocalizedErrorWithUnderlyingOSStatus: Returning error (AVFoundationErrorDomain / -11819) status (-16155)` when trying to port the below example code to iOS.
-
-To reproduce, you can run the `convertApp` target, and tap `Convert` button, after several printed PTS, the app will crash at `fatalError("Failed to append tagged buffers to multiview output")` 
-
-
-
+Port Apple's Coverting 3D video sample code to iOS.
 
 # Converting side-by-side 3D video to multiview HEVC
 
