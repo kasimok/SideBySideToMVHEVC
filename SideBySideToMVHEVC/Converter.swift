@@ -94,26 +94,47 @@ final class SideBySideConverter: Sendable {
         }
         multiviewWriter.startSession(atSourceTime: CMTime.zero)
         
+        var session: VTPixelTransferSession? = nil
+        guard VTPixelTransferSessionCreate(allocator: kCFAllocatorDefault, pixelTransferSessionOut: &session) == noErr, let session else {
+          fatalError("Failed to create pixel transfer")
+        }
+        
+        var pixelBufferPool: CVPixelBufferPool? = nil
+        
+        if pixelBufferPool == nil {
+          let bufferPoolSettings: [String: Any] = [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCVPixelFormatType_32ARGB),
+                                                   kCVPixelBufferWidthKey as String: self.eyeFrameSize.width,
+                                                   kCVPixelBufferHeightKey as String: self.eyeFrameSize.height,
+                                                   kCVPixelBufferIOSurfacePropertiesKey as String: [String: String]()
+          ]
+          CVPixelBufferPoolCreate(kCFAllocatorDefault, nil, bufferPoolSettings as NSDictionary, &pixelBufferPool)
+        }
+        
+        guard let pixelBufferPool else {
+          fatalError("Failed to create pixel buffer pool")
+        }
+        
         // The dispatch queue executes the closure when media reads from the input file are available.
         frameInput.requestMediaDataWhenReady(on: DispatchQueue(label: "Multiview HEVC Writer")) {
+          
+          /* Session/pixelBufferPool shouldn't be recreated, this closure is called repeatly.
           var session: VTPixelTransferSession? = nil
           guard VTPixelTransferSessionCreate(allocator: kCFAllocatorDefault, pixelTransferSessionOut: &session) == noErr, let session else {
             fatalError("Failed to create pixel transfer")
           }
+           
           var pixelBufferPool: CVPixelBufferPool? = nil
-          
+           
           if pixelBufferPool == nil {
-            let bufferPoolSettings: [String: Any] = [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCVPixelFormatType_32ARGB),
-                                                     kCVPixelBufferWidthKey as String: self.eyeFrameSize.width,
-                                                     kCVPixelBufferHeightKey as String: self.eyeFrameSize.height,
-                                                     kCVPixelBufferIOSurfacePropertiesKey as String: [String: String]()
-            ]
-            CVPixelBufferPoolCreate(kCFAllocatorDefault, nil, bufferPoolSettings as NSDictionary, &pixelBufferPool)
+          let bufferPoolSettings: [String: Any] = [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCVPixelFormatType_32ARGB),
+           kCVPixelBufferWidthKey as String: self.eyeFrameSize.width,
+           kCVPixelBufferHeightKey as String: self.eyeFrameSize.height,
+           kCVPixelBufferIOSurfacePropertiesKey as String: [String: String]()
+          ]
+          CVPixelBufferPoolCreate(kCFAllocatorDefault, nil, bufferPoolSettings as NSDictionary, &pixelBufferPool)
           }
+          */
           
-          guard let pixelBufferPool else {
-            fatalError("Failed to create pixel buffer pool")
-          }
           
           // Handling all available frames within the closure improves performance.
           while frameInput.isReadyForMoreMediaData && bufferInputAdapter.assetWriterInput.isReadyForMoreMediaData {
@@ -122,12 +143,10 @@ final class SideBySideConverter: Sendable {
               guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
                 fatalError("Failed to load source samples as an image buffer")
               }
-              // throttle the rate at which frames are processed and appended to the output. Without this delay, the code might be trying to append frames faster than they can be processed, leading to the fatalError("Failed to append tagged buffers to multiview
-              Thread.sleep(forTimeInterval: 0.02)
+              
               let taggedBuffers = self.convertFrame(fromSideBySide: imageBuffer, with: pixelBufferPool, in: session)
               let newPTS = sampleBuffer.outputPresentationTimeStamp
               
-              debugPrint(newPTS)
               if !bufferInputAdapter.appendTaggedBuffers(taggedBuffers, withPresentationTime: newPTS) {
                 fatalError("Failed to append tagged buffers to multiview output")
               }
